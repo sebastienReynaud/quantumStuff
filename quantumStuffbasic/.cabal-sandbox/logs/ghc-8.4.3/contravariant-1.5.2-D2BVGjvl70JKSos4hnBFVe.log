@@ -1,0 +1,7 @@
+Installing library in C:\Users\sreynaud\Documents\haskelet\quantumStuff\.cabal-sandbox\x86_64-windows-ghc-8.4.3\contravariant-1.5.2-D2BVGjvl70JKSos4hnBFVe
+nctor\Contravariant.hs, dist\dist-sandbox-e4bf8b7\build\Data\Functor\Contravariant.o )
+[2 of 4] Compiling Data.Functor.Contravariant.Divisible ( src\Data\Functor\Contravariant\Divisible.hs, dist\dist-sandbox-e4bf8b7\build\Data\Functor\Contravariant\Divisible.o )
+[3 of 4] Compiling Data.Functor.Contravariant.Compose ( src\Data\Functor\Contravariant\Compose.hs, dist\dist-sandbox-e4bf8b7\build\Data\Functor\Contravariant\Compose.o )
+[4 of 4] Compiling Data.Functor.Contravariant.Generic ( src\Data\Functor\Contravariant\Generic.hs, dist\dist-sandbox-e4bf8b7\build\Data\Functor\Contravariant\Generic.o )
+ignoring (possibly broken) abi-depends field for packages
+cabal: Leaving directory 'C:\Users\sreynaud\AppData\Local\Temp\cabal-tmp-19106\contravariant-1.5.2'

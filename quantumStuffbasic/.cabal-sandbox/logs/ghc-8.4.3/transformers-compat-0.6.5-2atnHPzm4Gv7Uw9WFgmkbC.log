@@ -1,0 +1,7 @@
+Installing library in C:\Users\sreynaud\Documents\haskelet\quantumStuff\.cabal-sandbox\x86_64-windows-ghc-8.4.3\transformers-compat-0.6.5-2atnHPzm4Gv7Uw9WFgmkbC
+ntrol\Monad\Trans\Instances.hs, dist\dist-sandbox-e4bf8b7\build\Control\Monad\Trans\Instances.o )
+[2 of 4] Compiling Data.Functor.Classes.Generic.Internal ( generics\Data\Functor\Classes\Generic\Internal.hs, dist\dist-sandbox-e4bf8b7\build\Data\Functor\Classes\Generic\Internal.o )
+[3 of 4] Compiling Data.Functor.Classes.Generic ( generics\Data\Functor\Classes\Generic.hs, dist\dist-sandbox-e4bf8b7\build\Data\Functor\Classes\Generic.o )
+[4 of 4] Compiling Paths_transformers_compat ( dist\dist-sandbox-e4bf8b7\build\autogen\Paths_transformers_compat.hs, dist\dist-sandbox-e4bf8b7\build\Paths_transformers_compat.o )
+ignoring (possibly broken) abi-depends field for packages
+cabal: Leaving directory 'C:\Users\sreynaud\AppData\Local\Temp\cabal-tmp-19106\transformers-compat-0.6.5'

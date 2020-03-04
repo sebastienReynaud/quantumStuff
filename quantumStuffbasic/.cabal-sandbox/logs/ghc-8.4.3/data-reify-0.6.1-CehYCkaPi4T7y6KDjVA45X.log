@@ -1,0 +1,5 @@
+Installing library in C:\Users\sreynaud\Documents\haskelet\quantumStuff\.cabal-sandbox\x86_64-windows-ghc-8.4.3\data-reify-0.6.1-CehYCkaPi4T7y6KDjVA45X
+st-sandbox-e4bf8b7\build\Data\Reify\Graph.o )
+[2 of 2] Compiling Data.Reify       ( Data\Reify.hs, dist\dist-sandbox-e4bf8b7\build\Data\Reify.o )
+ignoring (possibly broken) abi-depends field for packages
+cabal: Leaving directory 'C:\Users\sreynaud\AppData\Local\Temp\cabal-tmp-19106\data-reify-0.6.1'

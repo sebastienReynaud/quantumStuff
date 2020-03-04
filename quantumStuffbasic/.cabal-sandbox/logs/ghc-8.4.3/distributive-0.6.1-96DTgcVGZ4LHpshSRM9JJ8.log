@@ -1,0 +1,7 @@
+Installing library in C:\Users\sreynaud\Documents\haskelet\quantumStuff\.cabal-sandbox\x86_64-windows-ghc-8.4.3\distributive-0.6.1-96DTgcVGZ4LHpshSRM9JJ8
+ dist\dist-sandbox-e4bf8b7\build\Data\Distributive.o )
+[2 of 2] Compiling Data.Distributive.Generic ( src\Data\Distributive\Generic.hs, dist\dist-sandbox-e4bf8b7\build\Data\Distributive\Generic.o )
+ignoring (possibly broken) abi-depends field for packages
+bal-tmp-19107\distributive-0.6.1\dist/dist-sandbox-e4bf8b7\setup\setup.exe ...
+Configuring distributive-0.6.1...
+cabal: Leaving directory 'C:\Users\sreynaud\AppData\Local\Temp\cabal-tmp-19107\distributive-0.6.1'
