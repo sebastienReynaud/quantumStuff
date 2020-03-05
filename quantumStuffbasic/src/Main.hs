@@ -1,8 +1,8 @@
 module Main where
 
 import QuHO
-import PlotAnim
-
+--import PlotAnim
+import PlotAnimMulti
 
 
 main :: IO ()

@@ -25,6 +25,10 @@ aDagop (BosonState n c) = BosonState (n+1) (sqrt (fromIntegral n+1) * c)
 
 type SuperposState =  [BosonState]
 
+
+addEigenStates :: BosonState -> BosonState -> SuperposState
+addEigenStates b1 b2 = addStates [b1] [b2]
+
 addStates :: SuperposState -> SuperposState -> SuperposState
 addStates s1 s2 = go (sort $ concat [s1,s2])
                   where go :: SuperposState -> SuperposState
@@ -35,4 +39,7 @@ addStates s1 s2 = go (sort $ concat [s1,s2])
 
 
 
-
+coherentState :: Complex Double -> SuperposState -- cut at 5 eigenstates
+coherentState alpha = take 5 $ iterate recurFun (BosonState 0 (1 :+ 0))
+                      where recurFun :: BosonState -> BosonState
+                            recurFun (BosonState n c) = BosonState (n+1) (c * alpha / fromIntegral (n+1))

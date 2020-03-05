@@ -54,3 +54,14 @@ draw (SystemState gr bos ) = Pictures $ ((\x -> translate (50 * realToFrac (fst 
 
 animateTest:: IO ()
 animateTest = play window background fps initialState draw handleKeys update
+
+
+
+
+
+
+
+
+
+
+

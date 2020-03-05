@@ -21,7 +21,7 @@ background :: Color
 background = black
 
 grid1 :: [Double]
-grid1 = [-3.5, -3.25 .. 3.5]
+grid1 = [-3.5, -3.4      .. 3.5]
 
 handleKeys :: Event -> SystemState -> SystemState -- press key n to change energy state
 -- handleKeys (EventKey (Char '0') Down _ _) s = s {bos = (BosonState 0 (1 :+ 0)) }
@@ -34,7 +34,7 @@ update :: Float -> SystemState -> SystemState
 update seconds s = evoleT seconds s  
 
 evoleT :: Float -> SystemState -> SystemState --relative time, not absolute! 
-evoleT seconds sys = sys {bos = (\x -> evolve  x (realToFrac (1.5*seconds))) <$> b}
+evoleT seconds sys = sys {bos = (\x -> evolve  x (realToFrac (2*seconds))) <$> b}
                       where b = bos sys
 --evolve QHO eigenstate 
 
@@ -44,13 +44,15 @@ data SystemState = SystemState {grid :: [Double], bos :: SuperposState}
 
 
 initialState :: SystemState
-initialState = SystemState grid1 [BosonState 0 (0.9 :+ 0),BosonState 1 (1.2 :+ 0)]
+--initialState = SystemState grid1 [BosonState 0 (1 :+ 0),BosonState 1 (1 :+ 0), BosonState 2 (1 :+ 0)]
+initialState = SystemState grid1 (coherentState (0.5 :+ 0))
 
 
 drawLineOfCircles :: [(Double,Complex Double)]  -> [Picture]
 drawLineOfCircles l = let realp = (\x -> translate (50 * realToFrac (fst x))  (100 * realToFrac (realPart (snd x) )) (color red $ circleSolid 5)) <$>  l
                           imagp = (\x -> translate (50 * realToFrac (fst x))  (100 * realToFrac (imagPart (snd x) )) (color yellow $ circleSolid 5)) <$>  l
-                       in realp ++ imagp   
+                          mabs = (\x -> translate (50 * realToFrac (fst x))  (100 * realToFrac (realPart $ snd x * conjugate (snd x) )) (color green $ circleSolid 5)) <$>  l
+                       in realp ++ imagp ++ mabs  
 
 draw :: SystemState -> Picture
 draw (SystemState gr bos ) = Pictures $ drawLineOfCircles $ zip gr vals
