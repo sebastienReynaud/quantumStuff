@@ -14,33 +14,43 @@ offset = 100
 fps = 60
 
 window :: Display
-window = InWindow "Pong" (width, height) (offset, offset)
+window = InWindow "Quantum harmonic oscillator" (width, height) (offset, offset)
 
 
 background :: Color
 background = black
 
-handleKeys :: Event -> SystemState -> SystemState
-handleKeys (EventKey (Char 'p') Down _ _) s = s
+grid1 :: [Double]
+grid1 = [-3.5, -3.25 .. 3.5]
+
+handleKeys :: Event -> SystemState -> SystemState -- press key n to change energy state
+handleKeys (EventKey (Char '0') Down _ _) s = SystemState [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (BosonState 0 (1 :+ 0) ) <$> [-3.5, -3.25 .. 3.5]) (BosonState 0 (1 :+ 0)) 
+handleKeys (EventKey (Char '1') Down _ _) s = SystemState [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (BosonState 1 (1 :+ 0) ) <$> [-3.5, -3.25 .. 3.5]) (BosonState 1 (1 :+ 0)) 
+handleKeys (EventKey (Char '2') Down _ _) s = SystemState [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (BosonState 2 (1 :+ 0) ) <$> [-3.5, -3.25 .. 3.5]) (BosonState 2 (1 :+ 0)) 
+handleKeys (EventKey (Char '3') Down _ _) s = SystemState [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (BosonState 3 (1 :+ 0) ) <$> [-3.5, -3.25 .. 3.5]) (BosonState 3 (1 :+ 0)) 
 handleKeys _ s = s
 
 update :: Float -> SystemState -> SystemState
-update t s = s {values = zip [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (evolve  (BosonState 1 (1 :+ 0)) (realToFrac t)) <$>  [-3.5, -3.25 .. 3.5])} 
+update seconds s = evoleT seconds s  
 
-
+evoleT :: Float -> SystemState -> SystemState --relative time, not absolute! 
+evoleT seconds sys = sys {values = (energyStateToRealSpace (evolve  b (realToFrac (2*seconds)))) <$>  [-3.5, -3.25 .. 3.5], 
+                             bos = evolve  b (realToFrac (seconds))}
+                      where b = bos sys
 --evolve QHO eigenstate 
 
-data SystemState = SystemState {grid :: [Double],  values :: [(Double,Complex Double)], lvl :: Integer} 
+data SystemState = SystemState {grid :: [Double],  values :: [Complex Double], bos :: BosonState} 
  
 
 
 
 initialState :: SystemState
-initialState = SystemState [-3.5, -3.25 .. 3.5] (zip [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (BosonState 1 (1 :+ 0) ) <$> [-3.5, -3.25 .. 3.5])) 1
+initialState = SystemState [-3.5, -3.25 .. 3.5] (energyStateToRealSpace (BosonState 2 (1 :+ 0) ) <$> [-3.5, -3.25 .. 3.5]) (BosonState 2 (1 :+ 0))
 
 draw :: SystemState -> Picture
-draw (SystemState gr vals niv ) = Pictures $ (\x -> translate (50 * realToFrac (fst x))  (50 * realToFrac (realPart (snd x) )) (color yellow $ circleSolid 20)) <$>  vals
-
+draw (SystemState gr vals niv ) = Pictures $ ((\x -> translate (50 * realToFrac (fst x))  (100 * realToFrac (realPart (snd x) )) (color red $ circleSolid 5)) <$>  zip gr vals)
+                                            ++  ((\x -> translate (50 * realToFrac (fst x))  (100 * realToFrac (imagPart (snd x) )) (color yellow $ circleSolid 5)) <$>  zip gr vals)
+                                              
 
 animateTest:: IO ()
 animateTest = play window background fps initialState draw handleKeys update
