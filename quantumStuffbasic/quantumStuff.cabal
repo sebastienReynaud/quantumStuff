@@ -19,7 +19,8 @@ executable quantumStuff
   main-is:             Main.hs
   other-modules:       Bosons,
                        QuHO,
-                       PlotAnim
+                       PlotAnim,
+                       PlotAnimMulti
   -- other-extensions:
   build-depends:       base >=4.11 && <4.12,
                        ad,

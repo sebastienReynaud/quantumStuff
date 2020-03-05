@@ -18,4 +18,4 @@ energyStateToRealSpace (BosonState n c) x = c * (hermitPol (fromIntegral n) x :+
 --time Evolution hw = 1
 
 evolve :: BosonState -> Double -> BosonState
-evolve (BosonState n c) t = BosonState n (exp (0 :+ t) * c)
+evolve (BosonState n c) t = BosonState n (exp (0 :+ fromIntegral n * t) * c)
